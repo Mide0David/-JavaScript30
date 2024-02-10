@@ -69,8 +69,18 @@
     if (!e.keyCode) return;
   
   })
+  
+ 
   keys = document.querySelectorAll(".key")
-  console.log(keys)
+  keys.forEach(action)
+  function removePlaying(e){
+    if (e.propertyName != 'transform') return;  
+    this.classList.remove("playing");
+  }
+  function action(item){
+    item.addEventListener("transitionend", removePlaying)
+  }
+  
   
 </script>
 
