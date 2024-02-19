@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+let cityStatesPopulation;
+
+fetch(endpoint).then(Response => {
+  if (!Response.ok){
+    throw new Error('Network response was not ok');
+  }
+  return Response.json()
+}).then(data => {
+  cityStatesPopulation = data;
+  console.log(cityStatesPopulation)
+}).catch(error => {
+  console.error('There was a problem with the fetch operation:', error);
+});
+</script>
+</body>
+</html>
